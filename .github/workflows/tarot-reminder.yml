@@ -1,0 +1,21 @@
+name: Tarot Reminder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-reminder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call tarot reminder
+        run: |
+          echo "Calling tarot reminder endpoint..."
+
+          curl \
+            --fail-with-body \
+            --location \
+            --show-error \
+            --verbose \
+            --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/153.0.0.0 Safari/537.36" \
+            "https://raonsoop.com/taro/cron/reminder.php?key=${{ secrets.CRON_SECRET_KEY }}"
